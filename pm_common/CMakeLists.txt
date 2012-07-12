@@ -21,10 +21,13 @@ else(APPLE OR WIN32)
   set(LINUX_FLAGS "-DPMALSA")
 endif(APPLE OR WIN32)
 
+set(PM_OSX_VERSION 10.7)
+set(PM_OSX_SDK "/Developer/SDKs/MacOSX${PM_OSX_VERSION}.sdk")
+
 if(APPLE)
-  set(CMAKE_OSX_SYSROOT /Developer/SDKs/MacOSX10.5.sdk CACHE 
+  set(CMAKE_OSX_SYSROOT ${PM_OSX_SDK} CACHE 
       PATH "-isysroot parameter for compiler" FORCE)
-  set(CMAKE_C_FLAGS "-mmacosx-version-min=10.5" CACHE 
+  set(CMAKE_C_FLAGS "-mmacosx-version-min=${PM_OSX_VERSION}" CACHE 
       STRING "needed in conjunction with CMAKE_OSX_SYSROOT" FORCE)
 endif(APPLE)
 
